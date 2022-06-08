@@ -1,11 +1,8 @@
+import datetime
 import pandas
 import matplotlib.pyplot as plt
 import numpy as np
-import os
-import time 
-import datetime
 import ciso8601
-data = pandas.read_csv('bit.csv')
 def convertMonth(month):
     match month: 
         case "Jan":
@@ -38,19 +35,16 @@ def parseDate(data):
     month = convertMonth(array[0])
     day = array[1].replace(",", "")
     year = array[2]
-    tempTime = str(month) + str(day) + str(year)
-    print(tempTime)
-    ts = ciso8601.parse_datetime(tempTime)
-    print(ts)
-# Load data
-# data = pandas.read_csv('bit.csv')
-# print(data.Date)
+    dt = datetime.datetime(int(year), int(month), int(day))
+    timestamp = dt.replace(tzinfo=datetime.timezone.utc).timestamp()
+    return timestamp 
 
 if __name__ == "__main__":
-    # agrument = "Jan"
-    # data = pandas.read_csv('bit.csv')
-    #for i in range(len(data.Date)):
-     #   print(parseDate(data.Date[i]))
-    # print(convertMonth(agrument))
-    t = "01/12/2011"
-    ts = ciso8601.parse_datetime(t)
+
+    data = pandas.read_csv('bit.csv')
+    for i in reversed(range(len(data.Date))):
+        temp = str(parseDate(data.Date[i]))
+        data.replace(data.Date[i], temp, True)
+        print(data.Date[i])
+    data.to_csv('out.csv', 
+                 index = True)
