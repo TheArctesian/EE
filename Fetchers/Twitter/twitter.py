@@ -99,10 +99,10 @@ if __name__ == "__main__":
 
     # Enter your own credentials obtained
     # from your developer account
-    consumer_key = "L2BKElNco18WhHak3NkCM05t4"
-    consumer_secret = "DXL2KqEegX03uJbQNPxecGFqPiKUhw5vCpnzukiL3OvxFaJIiF"
-    access_key = "1042321525901152256-Po8en0crJfjW74hUWUgKt34n5AAAlP"
-    access_secret = "74bEpnfXM8O3Or3kajQERMeTjJVoYJFGXamUa5qDopE7y"
+    consumer_key    = ""
+    consumer_secret = ""
+    access_key      = ""
+    access_secret   = ""
 
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_key, access_secret)
