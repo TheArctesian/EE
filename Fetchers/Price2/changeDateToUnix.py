@@ -42,7 +42,8 @@ def parseDate(data):
 if __name__ == "__main__":
 
     data = pandas.read_csv('bit.csv')
-    for i in reversed(range(len(data.Date))):
+    for i in reversed(
+        range(len(data.Date))):
         temp = str(parseDate(data.Date[i]))
         data.replace(data.Date[i], temp, True)
         print(data.Date[i])
