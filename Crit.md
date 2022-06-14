@@ -8,13 +8,10 @@
 | [ ]   | Students should avoid topics that deal primarily with social aspects of information technology that would lie more within the subject ITGS (eg “The value of friendships attained through social networking sites”).                                                                                                                                                                            |
 | [ ]   | The research question must be sharply focused in order to allow for significant research into the topic at an appropriate depth. At the same time the topic must be accessible to an IB student.                                                                                                                                                                                                |
 | [ ]   | Broad topics (eg “To what extent is the variety of different computer languages in existence beneficial or problematic for programmers”) will only lead to superficial treatment within the 4,000-word limit.                                                                                                                                                                                   |
-|       |
 | [ ]   | Students should avoid choosing futuristic topics (eg “AI/robots in the next century“), which generally lead to opinion-based essays that are backed up with few facts. A journalistic approach should also be avoided as this will tend to lead to a superficial treatment of any computer science.                                                                                             |
 | [ ]   | The research question must be in the form of a question and should be stated in the introduction to the essay, and the areas investigated must be clearly placed in context. For example, an essay such as “How useful are neural networks in the evolution of machine learning?” must provide for the reader sufficient background information into both neural networks and machine learning. |
-|       |
 | [ ]   | The student must further explain why the topic and research question are worthy choices for an EE. The methodology candidates will use to answer this question should be clearly described.                                                                                                                                                                                                     |
 | [ ]   | The essay must be well planned, making use of a variety of authoritative sources. These can be taken from the internet, literature and interviews with experts in the relevant field.                                                                                                                                                                                                           |
-|       |
 | [ ]   | Many essays will involve an experimental or programming element, with the resulting data providing a valuable source. Studen                                                                                                                                                                                                                                                                    |
 
 ## Crit B
@@ -25,11 +22,8 @@
 | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | [ ]   | The student must demonstrate their own understanding of the topic into which the essay falls.                                                                                                                                                                                                                                                          |
 | [ ]   | An essay that is comprised primarily of reworded source material will not provide this evidence. Instead the student should provide clarifications or simpler explanations of any technical information that is taken from their sources, always linking this information to the original research question.                                           |
-|       |
 | [ ]   | The source material should be selected and incorporated in a way that illustrates the knowledge gained by the student in relation to the chosen topic.                                                                                                                                                                                                 |
-|       |
 | [ ]   | The language must be at a technical level that is appropriate to computer science, but used in such a way that clearly demonstrates the student’s own understanding. Students should beware of making their essays over-technical and should remember that the reader will not necessarily be an expert in the specific topic that is being addressed. |
-|       |
 
 ## Crit C
 
