@@ -1,3 +1,5 @@
+These are just genral crit not very specific 
+
 ## Crit A
 
 #### (Strands: Topic, Research question, Methodology)
@@ -58,3 +60,5 @@
 | [ ]   | Students are expected to provide reflections on the decision-making and planning process undertaken in completing the essay. Students must demonstrate how they arrived at a topic as well as the methods and approach used. This criterion assesses the extent to which a student has evidenced the rationale for decisions made throughout the planning process and the skills and understandings developed. |
 | [ ]   | Effective reflection highlights the journey the student has engaged in through the EE process. Students must show evidence of critical and reflective thinking that goes beyond simply describing the procedures that have been followed.                                                                                                                                                                      |
 | [ ]   | The reflections must provide the examiner with an insight into student thinking, creativity and originality within the research process. The student voice must be clearly present and demonstrate the learning that has taken place.                                                                                                                                                                          |
+
+
