@@ -60,7 +60,6 @@ def scrape(words, date_since, numtweet):
     # that you can access to
     # get information about each tweet
     list_tweets = [tweet for tweet in tweets]
-
     # Counter to maintain Tweet Count
     i = 1
 
