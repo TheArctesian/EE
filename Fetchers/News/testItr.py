@@ -1,40 +1,5 @@
-# pip install newsapi-python
 
-from newsapi import NewsApiClient
-import pandas as pd 
-import datetime as dt
-import logging
-
-def scrape (year, month, day):
-    key = NewsApiClient(api_key='3a9ab83923f249858a70f8ac907881fd')
-    # headlines = key.get_top_headlines(  q='bitcoin',
-    #                                    language='en',
-    #                                    from_param=dt.date(2020, 5, 22),
-    #                                    to=dt.date(2022, 6, 20),)
-    headline = key.get_everything(
-        q="bitcoin ",
-        language="en",
-        from_param=dt.date(year, month, day),
-        to=dt.date(year, month, day),
-    ) 
-    
-    return headline
-
-def write(headline, db):
-    # export to csv
-   
-    print(headline)
-    for i in range(len(headline['articles'])):
-        db.loc[i] = [
-            headline['articles'][i]['publishedAt'],
-            headline['articles'][i]['title'],
-            headline['articles'][i]['source']['name'],
-        ]
-    db.to_csv('news.csv', mode='a', index=True)
-
-if __name__ == "__main__":
-    
-    dates = [
+dates = [
         (2020, 5, 1),
         (2020, 5, 2),
         (2020, 5, 3),
@@ -895,13 +860,7 @@ if __name__ == "__main__":
         (2022, 6, 19),
         (2022, 6, 20),   
     ]
-    db = pd.DataFrame(
-        columns=[
-            "date",
-            "headline",
-            "source",
-        ]
-    )
-for year, date, day in dates:
-    out = scrape(year, date, day) # scrape news
-    write(out, db)
+#for k, v, d in dates:
+   # print (k, v, d)        
+
+print(len(dates))
