@@ -1,0 +1,1 @@
+pip install pandas python_dateutil scikit-learn SciPy numpy SciPy
