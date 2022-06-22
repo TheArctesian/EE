@@ -1,9 +1,10 @@
-import pandas as pd
 from sklearn.model_selection import train_test_split
 import joblib
 from sklearn.feature_extraction.text import CountVectorizer
 import os
 import logging
+import pandas as pd
+import re
 
 # LOGGING 
 class handler(logging.StreamHandler):
@@ -28,14 +29,28 @@ logging.basicConfig(level=logging.DEBUG, handlers=[handler()])
 logger = logging.getLogger('bobcat')
 logger.setLevel('DEBUG')
 
+# data
+headlines = pd.read_csv('news.csv')
+price = pd.read_csv('price.csv')
 
-def readData():
-    headlines = pd.read_csv('news.csv')
-    price = pd.read_csv('price.csv')
-    logging.info(price.head())
-    headlines.head()
+# data format
+headlines['Headline'] = headlines['Headline'].str.strip().str.lower()
+
+def clean(text):
+    text = str(text)
+    text = re.sub('[^A-Za-z]+', ' ', text).lower().strip()
+    logger.info(text)
+    return text
 
 
 if __name__ == "__main__":
-    readData()
-    
+    # Read 
+    headlines = pd.read_csv('news.csv')
+    price = pd.read_csv('price.csv')
+
+
+    # Clean
+    headlines['Headline'] = headlines['Headline'].apply(clean)
+
+
+    # TEXT BLOB 
