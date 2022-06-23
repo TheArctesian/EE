@@ -64,6 +64,9 @@ def getPolarity(review):
 
 def getSubjectivity(review):
     return TextBlob(review).sentiment.subjectivity
+
+
+
 if __name__ == "__main__":
     # Read 
     headlines = pd.read_csv('news.csv')
