@@ -33,7 +33,8 @@ def write(headline, db):
     db.to_csv('news.csv', mode='a', index=True)
 
 if __name__ == "__main__":
-    dates = [ (2019, 6, 26),
+    dates = [ 
+(2019, 6, 26),
 (2019, 6, 27),
 (2019, 6, 28),
 (2019, 6, 29),
