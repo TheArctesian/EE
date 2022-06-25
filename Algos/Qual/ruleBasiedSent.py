@@ -1,4 +1,5 @@
 import logging
+from operator import indexOf
 from matplotlib.pyplot import polar
 import pandas as pd
 import re
@@ -82,13 +83,7 @@ def vader(review):
     vs = analyzer.polarity_scores(review)
     return vs
 
-
-def getSubjectivity(review):
-    return TextBlob(review).sentiment.subjectivity
-if __name__ == "__main__":
-    # Read 
-    # headlines = pd.read_csv('news.csv')
-    # price = pd.read_csv('price.csv')
+def test():
     text = 'Bitcoin Miners, Join Investors on Selling Spree '
     text = clean(text)
     print(text)
@@ -96,25 +91,56 @@ if __name__ == "__main__":
     print(text)
     text = [word for word in text if not word in stop_words]
     print(text)
-    tag = tagTokens(text)
-    print(tag)
-    stem = stem(tag)
-    print(stem)
-    lema = lemmatize(stem)
-    print(lema) 
-    polarity = getPolarity(lema)
-    polarVader = vader(lema)
-    subjectivity = getSubjectivity(lema)
-    print(f'{lema} is Polar: {polarity} Sub: {subjectivity}')
-    print(f'{lema} is {polarVader} and {subjectivity} subjective')
-    # Clean
-    # headlines['Headline'] = headlines['Headline'].apply(clean)
+    text = tagTokens(text)
+    print(text)
+    text = stem(text)
+    print(text)
+    text  = lemmatize(text)
+    print(text)
+    polarity = getPolarity(text)
+    polarVader = vader(text)
+    subjectivity = getSubjectivity(text)
+    print(f'{text} is Polar: {polarity} Sub: {subjectivity}')
+    print(f'{text} is {polarVader} and {subjectivity} subjective')
 
+def getSubjectivity(review):
+    return TextBlob(review).sentiment.subjectivity
+
+
+if __name__ == "__main__":
+    # Read 
+    data = pd.read_csv('news.csv')
+    StemmedPOS = []
+    Lemmatisation = []
+    Subjectivity = []
+    TextBlob = []
+    Vader = []
+
+    # Clean
     # tokenize, clean stop words, tag
-    #for text in headlines['Headline']:
-    #    text = tokenize(text)
-    #    text = [word for word in text if not word in stop_words]
-    #    lemma = " ".join(text)
+    for text in data['Headline']: 
+        text = clean(text)
+        text = tokenize(text)
+        text = [word for word in text if not word in stop_words]
+        print(text)
+        tagged = tagTokens(text)
+
+        stemd = stem(tagged)
+        StemmedPOS.append(stemd)
+
+        lemma = lemmatize(stemd)
+        Lemmatisation.append(lemma)
+
+        subjectivity = getSubjectivity(lemma)
+        Subjectivity.append(subjectivity)
+
+        polarity = getPolarity(lemma)
+        TextBlob.append(polarity)
+
+        polarVader = vader(lemma)
+        Vader.append(polarVader)
+        
+        #data = pd.DataFrame([[indexOf(text)]])
 
     #    polarity = getPolarity(lemma)
     #    subjectivity = getSubjectivity(lemma)
@@ -125,3 +151,4 @@ if __name__ == "__main__":
 
         # tokenized = tokenize(text)
         # print(tokenized)
+       #  data.to_csv("news.csv", mode="a")
