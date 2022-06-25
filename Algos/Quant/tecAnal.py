@@ -1,5 +1,6 @@
 import os
 import logging
+from numpy import true_divide
 import pandas as pd
 
 # LOGGING 
@@ -26,11 +27,58 @@ logger = logging.getLogger('bobcat')
 logger.setLevel('DEBUG')
 
 
+def calAvg(array):
+    total = 0
+    for number in array: 
+        total += number
+    avg = total/len(array)
+    return avg
 
-def readData():
-    price = pd.read_csv('price.csv')
-    logging.info(price.head())
+def checkTopP(topPrice, new):
+    if topPrice > new: 
+        return topPrice
+    if new > topPrice: 
+        return new
+
+def checkHalf(topPrice, half):
+    if topPrice/2 == half:
+        return True
+    else:
+        return False
+    
+def hundredDayAvg():
+    return HDPA
+
+def thirtyDayAvg():
+    return TDPA
+
+def sevenDayAvg():
+    return SDPA
 
 if __name__ == "__main__":
-    readData()
+
+    topPrice = 19280
+    SDPA = 0 #Seven Day Price Avg 
+    TDPA = 0 #Thirty Day Price Avg
+    HDPA = 0 #Hundred Day Price Avg
+    price = []
+
+    SDTdVA = 0 #Seven Day Trade Volume Avg
+    TDTdVA = 0 #Thirty Day Trade Volume Avg
+    HDTdVA = 0 #Hundred Day Trade Volume Avg 
+    tradeVol = []
+
+    SDTsVA = 0 #Seven Day Transaction Volume Avg
+    TDTsVA = 0 #Thirty Day Transaction Volume Avg
+    HDTsVA = 0 #Hundred Day Transaction Volume Avg  
+    tranVol = [] 
+
+    SDHA = 0 #Seven Day HashRate Avg
+    TDHA = 0 #Thirty Day HashRate Avg
+    HDHA = 0 #Hundred Day HashRate Avg 
+    hashRate = []
     
+
+    data = pd.read_csv('AllData.csv') 
+    print(data.head())
+   
