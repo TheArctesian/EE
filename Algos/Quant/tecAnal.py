@@ -46,14 +46,34 @@ def checkHalf(topPrice, half):
     else:
         return False
     
-def hundredDayAvg():
-    return HDPA
+def hundredDayAvg(array):
+    while len(array) != 100 & len(array) <= 100:
+        array.pop(0)
+    HDA = calAvg(array) # Hundred day avg
+    return HDA
 
-def thirtyDayAvg():
-    return TDPA
+def thirtyDayAvg(array):
+    while len(array) != 30 & len(array) <= 30: 
+        array.pop(0)
+    TDA = calAvg(array) # Thirty Day Avg
+    return TDA
 
-def sevenDayAvg():
-    return SDPA
+def sevenDayAvg(array):
+    while len(array) != 7 & len(array) <= 7:
+        array.pop(0)
+
+    print(array)
+    SDA = calAvg(array) # Seven Day avg
+
+    return SDA
+def tester():
+    Tprice7 = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35]
+    T2price7 = [1,1,1,1]
+    T1 = thirtyDayAvg(Tprice7)
+    T2 = sevenDayAvg(T2price7)
+    print(f'{Tprice7} avg is {T1}')
+    print(f'{T2price7} avg is {T2}')
+
 
 if __name__ == "__main__":
 
@@ -62,23 +82,40 @@ if __name__ == "__main__":
     TDPA = 0 #Thirty Day Price Avg
     HDPA = 0 #Hundred Day Price Avg
     price = []
+    price100 = []
+    price30 = []
+    price7 = []
 
+    print(f'{Tprice7} avg is {T1}')
+    print(f'{T2price7} avg is {T2}')
+
+    topTradeVol = 4970000000
     SDTdVA = 0 #Seven Day Trade Volume Avg
     TDTdVA = 0 #Thirty Day Trade Volume Avg
     HDTdVA = 0 #Hundred Day Trade Volume Avg 
     tradeVol = []
+    tradeVol100 = []
+    tradeVol30 = []
+    tradeVol7 = []
+
 
     SDTsVA = 0 #Seven Day Transaction Volume Avg
     TDTsVA = 0 #Thirty Day Transaction Volume Avg
     HDTsVA = 0 #Hundred Day Transaction Volume Avg  
     tranVol = [] 
+    tranVol100 = [] 
+    tranVol30 = [] 
+    tranVol7 = [] 
 
     SDHA = 0 #Seven Day HashRate Avg
     TDHA = 0 #Thirty Day HashRate Avg
     HDHA = 0 #Hundred Day HashRate Avg 
     hashRate = []
+    hashRate100 = []
+    hashRate30 = []
+    hashRate7 = []
     
-
+    
     data = pd.read_csv('AllData.csv') 
-    print(data.head())
+   # print(data.head())
    
