@@ -86,8 +86,6 @@ if __name__ == "__main__":
     price30 = []
     price7 = []
 
-    print(f'{Tprice7} avg is {T1}')
-    print(f'{T2price7} avg is {T2}')
 
     topTradeVol = 4970000000
     SDTdVA = 0 #Seven Day Trade Volume Avg
