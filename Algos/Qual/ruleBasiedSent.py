@@ -110,12 +110,6 @@ def getSubjectivity(review):
 if __name__ == "__main__":
     # Read 
     data = pd.read_csv('news.csv')
-    StemmedPOS = []
-    Lemmatisation = []
-    Subjectivity = []
-    TextBlob = []
-    Vader = []
-
     # Clean
     # tokenize, clean stop words, tag
     for text in data['Headline']: 
@@ -124,22 +118,11 @@ if __name__ == "__main__":
         text = [word for word in text if not word in stop_words]
         print(text)
         tagged = tagTokens(text)
-
         stemd = stem(tagged)
-        StemmedPOS.append(stemd)
-
         lemma = lemmatize(stemd)
-        Lemmatisation.append(lemma)
-
-        subjectivity = getSubjectivity(lemma)
-        Subjectivity.append(subjectivity)
 
         polarity = getPolarity(lemma)
-        TextBlob.append(polarity)
-
-        polarVader = vader(lemma)
-        Vader.append(polarVader)
-        
+        print(polarity) 
         #data = pd.DataFrame([[indexOf(text)]])
 
     #    polarity = getPolarity(lemma)
