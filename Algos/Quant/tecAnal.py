@@ -27,11 +27,11 @@ logger = logging.getLogger('bobcat')
 logger.setLevel('DEBUG')
 
 def weight(number):
-    if number > 0:
-        return 1
-    if number > -0.31 < 0:
+    if number > -0.3 < -0.1:
         return 0
-    if number < -0.31:
+    if number > -0.1:
+        return 1
+    if number < -0.1:
         return 2
 
 def calAvg(array):
@@ -223,49 +223,49 @@ if __name__ == "__main__":
             w -= 0.05
 
         if TDTdVA < price[i] & i > 35:
-            w += 0.075
+            w += 0.1
         else: 
             w -= 0.1
 
         if SDTdVA < price[i] & i > 10:
-            w += 0.12
+            w += 0.2
         else: 
-            w -= 0.15
+            w -= 0.2
         
 
         if HDTsVA < price[i] & i > 110:
-            w += 0.05
+            w += 0.1
         else: 
             w -= 0.1
 
         if TDTsVA < price[i] & i > 35:
-            w += 0.075
+            w += 0.15
         else: 
-            w -= 0.1
+            w -= 0.15
 
         if SDTsVA < price[i] & i > 10:
-            w += 0.1
+            w += 0.2
         else: 
-            w -= 0.14
+            w -= 0.2
 
 
         if HDHA > price[i] & i > 110:
-            w += 0.05
+            w += 0.1
         else: 
-            w -= 0.05
+            w -= 0.1
 
         if TDHA> price[i] & i > 35:
-            w += 0.075
+            w += 0.1
         else: 
             w -= 0.1
 
         if SDHA > price[i] & i > 7:
             w += 0.1
         else: 
-            w -= 0.2
+            w -= 0.1
         
         action = weight(w)
-        if action == 0: 
+        if action == 0: # None 
             netBal = btc*price[i]
             netBal += balance
             print(f"{price[i]},{balance},{btc},None,{netBal}")
@@ -281,5 +281,5 @@ if __name__ == "__main__":
             netBal = balance
             print(f"{price[i]},{balance},{btc},Sell,{netBal}")
     
-    #print(price, tradeVol, tranVol, hashRate)
+   # print(price, tradeVol, tranVol, hashRate)
    
