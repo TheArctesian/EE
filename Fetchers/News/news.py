@@ -4,6 +4,7 @@ from newsapi import NewsApiClient
 import pandas as pd
 import datetime as dt
 import logging
+import time
 
 
 def scrape(year, month, day):
@@ -17,6 +18,8 @@ def scrape(year, month, day):
         language="en",
         from_param=dt.date(year, month, day),
         to=dt.date(year, month, day),
+        sort_by='relevancy',
+        page=1
     )
 
     return headline
@@ -36,7 +39,11 @@ def write(headline, db):
 
 
 if __name__ == "__main__":
+    startTime = time.time()
+
     dates = [
+
+        (2019, 6, 25),
         (2019, 6, 26),
         (2019, 6, 27),
         (2019, 6, 28),
@@ -1131,6 +1138,7 @@ if __name__ == "__main__":
         (2022, 6, 21),
         (2022, 6, 22),
         (2022, 6, 23),
+        (2022, 6, 24),
     ]
     db = pd.DataFrame(
         columns=[
@@ -1142,3 +1150,6 @@ if __name__ == "__main__":
 for year, date, day in dates:
     out = scrape(year, date, day)  # scrape news
     write(out, db)
+
+executionTime = (time.time() - startTime)
+print('Execution time in seconds: ' + str(executionTime))
