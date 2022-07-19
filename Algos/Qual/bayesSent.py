@@ -59,11 +59,7 @@ def stem(text):
                 newList.append(tuple([word, pos_dict.get(tag[0])])) 
     return newList
 
-def getPolarity(review):
-    return TextBlob(review).sentiment.polarity
-
-def getSubjectivity(review):
-    return TextBlob(review).sentiment.subjectivity
+def train():
 
 
 

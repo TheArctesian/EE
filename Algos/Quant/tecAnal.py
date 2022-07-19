@@ -201,7 +201,7 @@ if __name__ == "__main__":
             HDHA = hundredDayAvg(hashRate100) #Hundred Day HashRate Avg 
         
         w = 0  # general weight
-        if HDPA > price[i] & i > 110:
+        if HDPA > price[i] & i > 110:  #Hundred Day Trade Volume Avg 
             w += 0.1
         else: 
             w -= 0.1
@@ -217,49 +217,49 @@ if __name__ == "__main__":
             w -= 0.3
         
 
-        if HDTdVA < price[i] & i > 110:
+        if HDTdVA < tradeVol[i] & i > 110:
             w += 0.05
         else: 
             w -= 0.05
 
-        if TDTdVA < price[i] & i > 35:
+        if TDTdVA < tradeVol[i] & i > 35:
             w += 0.1
         else: 
             w -= 0.1
 
-        if SDTdVA < price[i] & i > 10:
+        if SDTdVA < tradeVol[i] & i > 10:
             w += 0.2
         else: 
             w -= 0.2
         
 
-        if HDTsVA < price[i] & i > 110:
+        if HDTsVA < tranVol[i] & i > 110:
             w += 0.1
         else: 
             w -= 0.1
 
-        if TDTsVA < price[i] & i > 35:
+        if TDTsVA < tradeVol[i] & i > 35:
             w += 0.15
         else: 
             w -= 0.15
 
-        if SDTsVA < price[i] & i > 10:
+        if SDTsVA < tranVol[i] & i > 10:
             w += 0.2
         else: 
             w -= 0.2
 
 
-        if HDHA > price[i] & i > 110:
+        if HDHA > hashRate[i] & i > 110:
             w += 0.1
         else: 
             w -= 0.1
 
-        if TDHA> price[i] & i > 35:
+        if TDHA> hashRate[i] & i > 35:
             w += 0.1
         else: 
             w -= 0.1
 
-        if SDHA > price[i] & i > 7:
+        if SDHA > hashRate[i] & i > 7:
             w += 0.1
         else: 
             w -= 0.1
