@@ -19,6 +19,7 @@ def sell(price, balance, btc):
     balance = price*btc 
     return balance
 
+    
 balance = 0
 btc = 1
 netBal = 11766

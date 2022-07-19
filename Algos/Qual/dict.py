@@ -82,7 +82,7 @@ neutral = [
         'why',
         'top'
         ]
-
+"""
 stop
 CRYPTOVERSE
 Satoshi Nakaboto:
@@ -92,3 +92,4 @@ This Week's Top Bitcoin and Crypto News - CNET
 - CNBC Television
 - Reuters
 – Bitcoin News - Bitcoin News
+"""

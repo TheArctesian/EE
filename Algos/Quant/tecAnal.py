@@ -27,9 +27,9 @@ logger = logging.getLogger('bobcat')
 logger.setLevel('DEBUG')
 
 def weight(number):
-    if number > -0.3 < -0.1:
+    if -0.1 < number < 0.1:
         return 0
-    if number > -0.1:
+    if number > 0.1:
         return 1
     if number < -0.1:
         return 2
@@ -192,7 +192,7 @@ if __name__ == "__main__":
             HDTsVA = hundredDayAvg(tradeVol100) #Hundred Day Transaction Volume Avg  
         
         if i > 10: 
-            SDHA = sevenDayAvg(hashRate7)#Seven Day HashRate Avg
+            SDHA = sevenDayAvg(hashRate7) #Seven Day HashRate Avg
         
         if i > 35: 
             TDHA = thirtyDayAvg(hashRate30) #Thirty Day HashRate Avg
@@ -201,65 +201,65 @@ if __name__ == "__main__":
             HDHA = hundredDayAvg(hashRate100) #Hundred Day HashRate Avg 
         
         w = 0  # general weight
-        if HDPA > price[i] & i > 110:  #Hundred Day Trade Volume Avg 
+        if HDPA > price[i] & i > 110:  #Hundred Day Price Avg 
             w += 0.1
         else: 
             w -= 0.1
 
-        if TDPA > price[i] & i > 35:
+        if TDPA > price[i] & i > 35: # Thirty day price avg
             w += 0.2
         else: 
             w -= 0.2
 
-        if SDPA > price[i] & i > 10:
+        if SDPA > price[i] & i > 10: # Seven day price avg
             w += 0.3
         else: 
             w -= 0.3
         
 
-        if HDTdVA < tradeVol[i] & i > 110:
+        if HDTdVA > tradeVol[i] & i > 110: # Hundred day trade vol 
             w += 0.05
         else: 
             w -= 0.05
 
-        if TDTdVA < tradeVol[i] & i > 35:
+        if TDTdVA > tradeVol[i] & i > 35: # Thirty day trade vol
             w += 0.1
         else: 
             w -= 0.1
 
-        if SDTdVA < tradeVol[i] & i > 10:
+        if SDTdVA > tradeVol[i] & i > 10: # Seven day trade vol
             w += 0.2
         else: 
             w -= 0.2
         
 
-        if HDTsVA < tranVol[i] & i > 110:
+        if HDTsVA < tranVol[i] & i > 110: # Hundred day transaction volume
             w += 0.1
         else: 
             w -= 0.1
 
-        if TDTsVA < tradeVol[i] & i > 35:
+        if TDTsVA < tradeVol[i] & i > 35: # Thirty day transaction volume
             w += 0.15
         else: 
             w -= 0.15
 
-        if SDTsVA < tranVol[i] & i > 10:
+        if SDTsVA < tranVol[i] & i > 10: # Seven day transaction volume
             w += 0.2
         else: 
             w -= 0.2
 
 
-        if HDHA > hashRate[i] & i > 110:
+        if HDHA > hashRate[i] & i > 110: # Hundred day hashRate
             w += 0.1
         else: 
             w -= 0.1
 
-        if TDHA> hashRate[i] & i > 35:
+        if TDHA> hashRate[i] & i > 35: # Thirty day hashRate
             w += 0.1
         else: 
             w -= 0.1
 
-        if SDHA > hashRate[i] & i > 7:
+        if SDHA > hashRate[i] & i > 7: # Seven day hashRate
             w += 0.1
         else: 
             w -= 0.1
@@ -268,18 +268,18 @@ if __name__ == "__main__":
         if action == 0: # None 
             netBal = btc*price[i]
             netBal += balance
-            print(f"{price[i]},{balance},{btc},None,{netBal}")
+            print(f"{price[i]},{balance},{btc},None,{netBal},{w}")
         if action == 1: #you wont be able to buy anything on turn 1
             btc = buy(price[i], balance, btc)
             balance = 0
             netBal = btc*price[i]
             netBal += balance
-            print(f"{price[i]},{balance},{btc},Buy,{netBal}")
+            print(f"{price[i]},{balance},{btc},Buy,{netBal},{w}")
         if action == 2:
             balance = sell(price[i], balance, btc)
             btc = 0
             netBal = balance
-            print(f"{price[i]},{balance},{btc},Sell,{netBal}")
+            print(f"{price[i]},{balance},{btc},Sell,{netBal},{w}")
     
    # print(price, tradeVol, tranVol, hashRate)
-   
+print(balance) 
