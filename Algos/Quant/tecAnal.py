@@ -2,7 +2,7 @@ import os
 import logging
 from numpy import true_divide
 import pandas as pd
-
+from coalas import csvReader as c
 # LOGGING 
 class handler(logging.StreamHandler):
     colors = {
@@ -97,7 +97,8 @@ def sell(price, balance, btc):
     return balance
 
 if __name__ == "__main__":
-
+    c.importCSV('AllData.csv')
+    c.addCol("action")
     balance = 0
     btc = 1
     netBal = 11766
@@ -268,18 +269,21 @@ if __name__ == "__main__":
         if action == 0: # None 
             netBal = btc*price[i]
             netBal += balance
+            c.action.append(0)
             print(f"{price[i]},{balance},{btc},None,{netBal},{w}")
         if action == 1: #you wont be able to buy anything on turn 1
             btc = buy(price[i], balance, btc)
             balance = 0
             netBal = btc*price[i]
             netBal += balance
+            c.action.append(1)
             print(f"{price[i]},{balance},{btc},Buy,{netBal},{w}")
         if action == 2:
             balance = sell(price[i], balance, btc)
             btc = 0
             netBal = balance
+            c.action.append(-1)
             print(f"{price[i]},{balance},{btc},Sell,{netBal},{w}")
     
    # print(price, tradeVol, tranVol, hashRate)
-print(balance) 
+    c.writeCSV("p")

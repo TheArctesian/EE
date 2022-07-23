@@ -867,4 +867,4 @@ dates = [
     
 if __name__ == "__main__":
     initMoney = 1000000
-    print("cum")
+    print("this is useless")

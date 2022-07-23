@@ -77,14 +77,29 @@ def lemmatize(pos_data):
     return lemma_rew
 
 def getPolarity(review):
-    return TextBlob(review).sentiment.polarity
+    pol = TextBlob(review).sentiment.polarity
+    if pol == 0:
+        return 0
+    if pol < 0:
+        return -1
+    if pol > 0:
+        return 1
+
 
 def vader(review):
     vs = analyzer.polarity_scores(review)
-    return vs
+    
+    if vs['compound'] >= 0.05 :
+        return 1
+ 
+    elif vs['compound'] <= - 0.05 :
+        return -1
+ 
+    else :
+        return 0
 
 def test():
-    text = 'Bitcoin Miners, Join Investors on Selling Spree '
+    text = 'very bad man '
     text = clean(text)
     print(text)
     text = tokenize(text)
@@ -107,22 +122,24 @@ def getSubjectivity(review):
     return TextBlob(review).sentiment.subjectivity
 
 
+
 if __name__ == "__main__":
+    test()
     # Read 
-    data = pd.read_csv('news.csv')
+    # data = pd.read_csv('news.csv')
     # Clean
     # tokenize, clean stop words, tag
-    for text in data['Headline']: 
-        text = clean(text)
-        text = tokenize(text)
-        text = [word for word in text if not word in stop_words]
-        print(text)
-        tagged = tagTokens(text)
-        stemd = stem(tagged)
-        lemma = lemmatize(stemd)
+    # for text in data['Headline']: 
+        # text = clean(text)
+        # text = tokenize(text)
+        # text = [word for word in text if not word in stop_words]
+        # print(text)
+        # tagged = tagTokens(text)
+        # stemd = stem(tagged)
+        # lemma = lemmatize(stemd)
 
-        polarity = getPolarity(lemma)
-        print(polarity) 
+        # polarity = getPolarity(lemma)
+        # print(polarity) 
         #data = pd.DataFrame([[indexOf(text)]])
 
     #    polarity = getPolarity(lemma)
