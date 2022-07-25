@@ -124,7 +124,6 @@ def getSubjectivity(review):
 
 
 if __name__ == "__main__":
-    test()
     # Read 
     # data = pd.read_csv('news.csv')
     # Clean
