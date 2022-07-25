@@ -16,6 +16,14 @@ def vect(X):
     features_nd = features.toarray()
     return features_nd
 
+def vecSingle(st):
+    v =CountVectorizer()
+    v.fit(st)
+    vector = v.transform(st)
+    fe = vector.toarray()
+    return fe
+
+    
 def test():
     y_pred = classifer.predict(X_test)
     print(accuracy_score(y_pred, y_test))
@@ -39,19 +47,24 @@ def classify():
     x = d.iloc[:, 2].values.astype('U')
     # This list is 108733 long and the classifer can only take 1093 at a time
     # 108733/1093 ≈ 100
-    pee = []
-    for i in range(99):
-        globals()[f'array{i}'] = []
-        for p in range(1094): 
-            pee.append(p+i*1094)
-            globals()[f'array{i}'].append(x[p+i*1094])
-        print(globals()[f'array{i}'])
-    print(len(pee))
-
-    #headl = vect(x)
-    #pred = classifer.predict(headl) 
-    #print(f'Best: {testBest(pred)}')
-    #print(f'Trained: {testTrained(pred)}')
+    # pee = []
+    # for i in range(99):
+    #     globals()[f'array{i}'] = []
+    #     for p in range(1094): 
+    #         pee.append(p+i*1094)
+    #         globals()[f'array{i}'].append(x[p+i*1094])
+    #     print(globals()[f'array{i}'])
+    # print(len(pee))
+    # for value in x: 
+        # print(value)
+        # headl = vect(value)
+    temp = []
+    temp.append(x[0])
+    print(temp)
+    headl = vecSingle(temp)
+    pred = classifer.predict(headl) 
+    print(f'Best: {testBest(pred)}')
+    print(f'Trained: {testTrained(pred)}')
 
 
 if __name__ == "__main__":
