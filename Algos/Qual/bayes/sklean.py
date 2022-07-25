@@ -32,13 +32,17 @@ def testTrained(pred):
     return accuracy_score(pred,c.trained)
 def testBest(pred):
     return accuracy_score(pred,c.Best)
+def testWorst(pred):
+    return accuracy_score(pred,c.Worst)
 def checkWhole(): # idk u come up with a name
     df = pd.read_csv('lemma copy.csv')
     x = df.iloc[:, 0].values.astype('U')
     headl = vect(x)
     pred = classifer.predict(headl) 
-    print(f'Best: {testBest(pred)}')
     print(f'Trained: {testTrained(pred)}')
+    print(f'Best: {testBest(pred)}')
+    print(f'Worst: {testWorst(pred)}')
+
         # This throws error: ValueError: X has 31395 features, but GaussianNB is expecting 2881 features as input.
         # This error just wants less data 1093
 
@@ -87,4 +91,4 @@ if __name__ == "__main__":
     # classifer = BernoulliNB()
     classifer.fit(X_train, y_train)    
     test()
-    classify()
+    checkWhole()

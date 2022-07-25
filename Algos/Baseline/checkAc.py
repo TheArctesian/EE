@@ -24,5 +24,6 @@ print(f'{c.col.BOLD}{c.col.CYAN}Comparing against Worst{c.col.ENDC}')
 print(f'TextBlob Accuracy: {accuracy_score(c.Worst,c.TextBlobPol)}')
 print(f'Vader Accuracy: {accuracy_score(c.Worst,c.VaderPol)}')
 print(f'Dict Accuracy: {accuracy_score(c.Worst,c.DictPol)}')
+print(f'Algo Accuracy: {accuracy_score(c.Worst,c.TecAction)}')
 print(f'Trained Accuracy: {accuracy_score(c.Worst,c.TecAction)}')
 
