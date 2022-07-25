@@ -39,15 +39,14 @@ def classify():
     x = d.iloc[:, 2].values.astype('U')
     # This list is 108733 long and the classifer can only take 1093 at a time
     # 108733/1093 ≈ 100
+    pee = []
     for i in range(99):
         globals()[f'array{i}'] = []
-        for p in range(1093): 
-            globals()[f'array{i}'].append(x[p+i*1093])
+        for p in range(1094): 
+            pee.append(p+i*1094)
+            globals()[f'array{i}'].append(x[p+i*1094])
         print(globals()[f'array{i}'])
-
-    print(array98)
-
-        
+    print(len(pee))
 
     #headl = vect(x)
     #pred = classifer.predict(headl) 
