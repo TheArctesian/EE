@@ -24,16 +24,25 @@ def testTrained(pred):
     return accuracy_score(pred,c.trained)
 def testBest(pred):
     return accuracy_score(pred,c.Best)
-def foo(): # idk u come up with a name
+def checkWhole(): # idk u come up with a name
     df = pd.read_csv('lemma copy.csv')
     x = df.iloc[:, 0].values.astype('U')
-    print(x)
     headl = vect(x)
-    print(len(headl))
     pred = classifer.predict(headl) 
     print(f'Best: {testBest(pred)}')
     print(f'Trained: {testTrained(pred)}')
         # This throws error: ValueError: X has 31395 features, but GaussianNB is expecting 2881 features as input.
+
+def classify():
+    d = pd.read_csv('out.csv')
+    x = d.iloc[:, 0].values.astype('U')
+    for y in x: 
+        print(y)
+    #headl = vect(x)
+    #pred = classifer.predict(headl) 
+    #print(f'Best: {testBest(pred)}')
+    #print(f'Trained: {testTrained(pred)}')
+
 
 if __name__ == "__main__":
     c.importCSV('lemma copy.csv')
@@ -55,4 +64,4 @@ if __name__ == "__main__":
     # classifer = BernoulliNB()
     classifer.fit(X_train, y_train)    
     test()
-    foo()
+    classify()
