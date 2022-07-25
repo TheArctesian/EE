@@ -5,40 +5,54 @@ import pandas as pd
 from coalas import csvReader as c
 from sklearn.metrics import accuracy_score
 from sklearn.naive_bayes import GaussianNB
+from sklearn.naive_bayes import BernoulliNB
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import CountVectorizer
 
-df = pd.read_csv('lemma copy.csv')
-c.importCSV('lemma copy.csv')
-vectorizer = CountVectorizer(
-    analyzer = 'word',
-    lowercase = False,
-)
+# df = pd.read_csv('lemma copy.csv')
+def vect(X):
+    features = vectorizer.fit_transform(X)
+    features_nd = features.toarray()
+    return features_nd
 
-# X = df.iloc[:, 0].values
-# y = df.iloc[:, 1].values
-X = c.lemma
-# y = c.Best
-y = c.trained
-# count_vec = CountVectorizer(ngram_range=(
-    # 1, 3), stop_words="english").fit(X)
-features = vectorizer.fit_transform(X)
+def test():
+    y_pred = classifer.predict(X_test)
+    print(accuracy_score(y_pred, y_test))
 
-features_nd = features.toarray()
-# X = count_vec.transform(X)
-X_train, X_test, y_train, y_test =train_test_split(features_nd,y,test_size= 0.2, random_state=0)
+def testTrained(pred):
+    return accuracy_score(pred,c.trained)
+def testBest(pred):
+    return accuracy_score(pred,c.Best)
+def foo(): # idk u come up with a name
+    df = pd.read_csv('lemma copy.csv')
+    x = df.iloc[:, 0].values.astype('U')
+    print(x)
+    headl = vect(x)
+    print(len(headl))
+    pred = classifer.predict(headl) 
+    print(f'Best: {testBest(pred)}')
+    print(f'Trained: {testTrained(pred)}')
+        # This throws error: ValueError: X has 31395 features, but GaussianNB is expecting 2881 features as input.
 
-sc_X = StandardScaler() 
-# print(X_train)
-X_train = sc_X.fit_transform(X_train)
-X_test = sc_X.fit_transform(X_test)
+if __name__ == "__main__":
+    c.importCSV('lemma copy.csv')
+    vectorizer = CountVectorizer(
+        analyzer = 'word',
+        lowercase = False,
+    )
+    X = c.lemma
+    y = c.Best
+    # y = c.trained 
+    features_nd = vect(X)
+    X_train, X_test, y_train, y_test =train_test_split(features_nd,y,test_size= 0.2, random_state=0)
+    sc_X = StandardScaler() 
+    # print(X_train)
+    X_train = sc_X.fit_transform(X_train)
+    X_test = sc_X.fit_transform(X_test)
 
-classifer = GaussianNB()
-
-classifer.fit(X_train, y_train)
-
-# testing the model
-y_pred = classifer.predict(X_test)
-
-print(accuracy_score(y_pred, y_test))
+    classifer = GaussianNB()
+    # classifer = BernoulliNB()
+    classifer.fit(X_train, y_train)    
+    test()
+    foo()
