@@ -32,12 +32,23 @@ def checkWhole(): # idk u come up with a name
     print(f'Best: {testBest(pred)}')
     print(f'Trained: {testTrained(pred)}')
         # This throws error: ValueError: X has 31395 features, but GaussianNB is expecting 2881 features as input.
+        # This error just wants less data 1093
 
 def classify():
     d = pd.read_csv('out.csv')
-    x = d.iloc[:, 0].values.astype('U')
-    for y in x: 
-        print(y)
+    x = d.iloc[:, 2].values.astype('U')
+    # This list is 108733 long and the classifer can only take 1093 at a time
+    # 108733/1093 ≈ 100
+    for i in range(99):
+        globals()[f'array{i}'] = []
+        for p in range(1093): 
+            globals()[f'array{i}'].append(x[p+i*1093])
+        print(globals()[f'array{i}'])
+
+    print(array98)
+
+        
+
     #headl = vect(x)
     #pred = classifer.predict(headl) 
     #print(f'Best: {testBest(pred)}')
