@@ -25,7 +25,11 @@ def vecSingle(st):
 
     
 def test():
-    y_pred = classifer.predict(X_test)
+    tempAr = []
+    for i in X_test:
+        i = [i]
+        y_pred = classifer.predict(i)
+        tempAr.append(y_pred)
     print(accuracy_score(y_pred, y_test))
 
 def testTrained(pred):
@@ -76,7 +80,10 @@ if __name__ == '__main__':
 
     classifer = GaussianNB()
     # classifer = BernoulliNB()
-    classifer.fit(X_train, y_train)    
+    for i in range(len(X_train)):
+        xT = [X_train[i]]
+        yT = [y_train[i]]
+        classifer.fit(xT, yT)    
     test()
     checkWhole()
-    classify()
+    #classify()

@@ -59,7 +59,6 @@ def stem(text):
                 newList.append(tuple([word, pos_dict.get(tag[0])])) 
     return newList
 
-def train():
 
 
 
