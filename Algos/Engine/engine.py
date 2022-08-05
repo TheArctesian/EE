@@ -23,31 +23,31 @@ def eng(name):
     for i in range(len(c.Price)): 
         action = c.action[i]
         print(f'{action} + {type(action)}')
-        if action == '0': # None 
+        if action == 0: # None 
             netBal = btc*c.Price[i]
-            netBal += int(balance)
+            netBal += balance
             print(balance)
             print(action)
-            c.balance.append(balance)
-        if action == '1': #you wont be able to buy anything on turn 1
+            c.bayesbalance.append(balance)
+        if action == 1: #you wont be able to buy anything on turn 1
             btc = buy(c.Price[i], balance, btc)
             balance = 0
             netBal = btc*c.Price[i]
-            netBal += int(balance)
+            netBal += balance
             print(balance)
             print(action)
-            c.balance.append(balance)
-        if action == '-1':
+            c.bayesbalance.append(balance)
+        if action == -1:
             balance = sell(c.Price[i], balance, btc)
             btc = 0
             netBal = int(balance)
             print(balance)
             print(action)
-            c.balance.append(balance)
+            c.bayesbalance.append(balance)
 
 
 if __name__ == "__main__":
     c.importCSV('../Qual/bayes/daddybayes/classified.csv')
-    eng("balance")
+    eng("bayesbalance")
     c.printHeaders()
     c.writeCSV("out.csv")
