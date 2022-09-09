@@ -215,18 +215,18 @@ if __name__ == "__main__":
         if SDPA > price[i] & i > 10: # Seven day price avg
             w += 0.3
         else: 
-            w -= 0.3
+            w -= 0.2
         
 
         if HDTdVA > tradeVol[i] & i > 110: # Hundred day trade vol 
-            w += 0.05
-        else: 
-            w -= 0.05
-
-        if TDTdVA > tradeVol[i] & i > 35: # Thirty day trade vol
             w += 0.1
         else: 
             w -= 0.1
+
+        if TDTdVA > tradeVol[i] & i > 35: # Thirty day trade vol
+            w += 0.15
+        else: 
+            w -= 0.15
 
         if SDTdVA > tradeVol[i] & i > 10: # Seven day trade vol
             w += 0.2
@@ -235,9 +235,9 @@ if __name__ == "__main__":
         
 
         if HDTsVA < tranVol[i] & i > 110: # Hundred day transaction volume
-            w += 0.1
+            w += 0.05
         else: 
-            w -= 0.1
+            w -= 0.05
 
         if TDTsVA < tradeVol[i] & i > 35: # Thirty day transaction volume
             w += 0.15
@@ -247,13 +247,13 @@ if __name__ == "__main__":
         if SDTsVA < tranVol[i] & i > 10: # Seven day transaction volume
             w += 0.2
         else: 
-            w -= 0.2
+            w -= 0.15
 
 
         if HDHA > hashRate[i] & i > 110: # Hundred day hashRate
-            w += 0.1
+            w += 0.05
         else: 
-            w -= 0.1
+            w -= 0.05
 
         if TDHA> hashRate[i] & i > 35: # Thirty day hashRate
             w += 0.1
@@ -261,9 +261,9 @@ if __name__ == "__main__":
             w -= 0.1
 
         if SDHA > hashRate[i] & i > 7: # Seven day hashRate
-            w += 0.1
+            w += 0.2
         else: 
-            w -= 0.1
+            w -= 0.2
         
         action = weight(w)
         if action == 0: # None 
@@ -285,5 +285,5 @@ if __name__ == "__main__":
             c.action.append(-1)
             print(f"{price[i]},{balance},{btc},Sell,{netBal},{w}")
     
-   # print(price, tradeVol, tranVol, hashRate)
     c.writeCSV("p")
+    print(netBal)
