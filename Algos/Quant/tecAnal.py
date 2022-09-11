@@ -27,11 +27,12 @@ logger = logging.getLogger('bobcat')
 logger.setLevel('DEBUG')
 
 def weight(number):
-    if -0.1 < number < 0.1:
+    weight = 1
+    if -weight < number < weight:
         return 0
-    if number > 0.1:
+    if number > weight:
         return 1
-    if number < -0.1:
+    if number < -weight:
         return 2
 
 def calAvg(array):
@@ -97,7 +98,7 @@ def sell(price, balance, btc):
     return balance
 
 if __name__ == "__main__":
-    c.importCSV('AllData.csv')
+    c.importCSV('../Data/AllData.csv')
     c.addCol("action")
     balance = 0
     btc = 1
@@ -139,7 +140,7 @@ if __name__ == "__main__":
     
 
     print("price,balance,btc,action,netBalance")
-    data = pd.read_csv('AllData.csv') 
+    data = pd.read_csv('../Data/AllData.csv') 
 
     for p in data['Price']:
         price.append(p)
@@ -217,22 +218,24 @@ if __name__ == "__main__":
         else: 
             w -= 0.2
         
+#########################################################
 
         if HDTdVA > tradeVol[i] & i > 110: # Hundred day trade vol 
-            w += 0.1
-        else: 
             w -= 0.1
+        else: 
+            w += 0.1
 
         if TDTdVA > tradeVol[i] & i > 35: # Thirty day trade vol
-            w += 0.15
-        else: 
             w -= 0.15
+        else: 
+            w += 0.15
 
         if SDTdVA > tradeVol[i] & i > 10: # Seven day trade vol
-            w += 0.2
-        else: 
             w -= 0.2
+        else: 
+            w += 0.2
         
+#########################################################
 
         if HDTsVA < tranVol[i] & i > 110: # Hundred day transaction volume
             w += 0.05
@@ -249,6 +252,7 @@ if __name__ == "__main__":
         else: 
             w -= 0.15
 
+#########################################################
 
         if HDHA > hashRate[i] & i > 110: # Hundred day hashRate
             w += 0.05
@@ -285,5 +289,5 @@ if __name__ == "__main__":
             c.action.append(-1)
             print(f"{price[i]},{balance},{btc},Sell,{netBal},{w}")
     
-    c.writeCSV("p")
+    c.writeCSV("p.csv")
     print(netBal)
