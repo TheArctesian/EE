@@ -38,10 +38,18 @@ harshrate: 32.05882406901156
 
 <hr>
 Price-Trade Volume R
-Pearson's r =      0.0056
+Pearson's r =      -0.1638
 <hr>
 Price-Trans Volume R
-Pearson's r =      0.057
+Pearson's r =      -0.0356
 <hr>
 Price-HashRate R
-Pearson's r =      0.233
+Pearson's r =      0.0041
+
+```py
+Text = ' Bitcoin Miners, Join Investors on Selling Spree '
+CleanAndLowerCase = 'bitcoin miners join investors on selling spree'
+TextArray = ['bitcoin', 'miners', 'join', 'investors', 'on', 'selling', 'spree']
+NoStopWords = ['bitcoin', 'miner', 'join' , 'investor', 'sell', 'spree']
+Final = 'bitcoin miner join investor sell spree'
+```

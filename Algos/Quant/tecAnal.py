@@ -27,7 +27,7 @@ logger = logging.getLogger('bobcat')
 logger.setLevel('DEBUG')
 
 def weight(number):
-    weight = 1
+    weight = 1.0
     if -weight < number < weight:
         return 0
     if number > weight:
