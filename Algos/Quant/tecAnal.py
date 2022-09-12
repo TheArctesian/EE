@@ -100,6 +100,7 @@ def sell(price, balance, btc):
 if __name__ == "__main__":
     c.importCSV('../Data/AllData.csv')
     c.addCol("action")
+    c.addCol("balance")
     balance = 0
     btc = 1
     netBal = 11766
@@ -274,6 +275,7 @@ if __name__ == "__main__":
             netBal = btc*price[i]
             netBal += balance
             c.action.append(0)
+            c.balance.append(netBal)
             print(f"{price[i]},{balance},{btc},None,{netBal},{w}")
         if action == 1: #you wont be able to buy anything on turn 1
             btc = buy(price[i], balance, btc)
@@ -281,12 +283,14 @@ if __name__ == "__main__":
             netBal = btc*price[i]
             netBal += balance
             c.action.append(1)
+            c.balance.append(netBal)
             print(f"{price[i]},{balance},{btc},Buy,{netBal},{w}")
         if action == 2:
             balance = sell(price[i], balance, btc)
             btc = 0
             netBal = balance
             c.action.append(-1)
+            c.balance.append(netBal)
             print(f"{price[i]},{balance},{btc},Sell,{netBal},{w}")
     
     c.writeCSV("p.csv")
