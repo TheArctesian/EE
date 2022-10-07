@@ -205,26 +205,26 @@ if __name__ == "__main__":
         
         w = 0  # general weight
         if HDPA > price[i] & i > 110:  #Hundred Day Price Avg 
+            w += 0.5
+        else: 
+            w -= 0.5
+
+        if TDPA > price[i] & i > 35: # Thirty day price avg
+            w += 0.3
+        else: 
+            w -= 0.3
+
+        if SDPA > price[i] & i > 10: # Seven day price avg
             w += 0.1
         else: 
             w -= 0.1
-
-        if TDPA > price[i] & i > 35: # Thirty day price avg
-            w += 0.2
-        else: 
-            w -= 0.2
-
-        if SDPA > price[i] & i > 10: # Seven day price avg
-            w += 0.3
-        else: 
-            w -= 0.2
         
 #########################################################
 
         if HDTdVA > tradeVol[i] & i > 110: # Hundred day trade vol 
-            w -= 0.1
+            w -= 0.3
         else: 
-            w += 0.1
+            w += 0.3
 
         if TDTdVA > tradeVol[i] & i > 35: # Thirty day trade vol
             w -= 0.15
@@ -232,16 +232,16 @@ if __name__ == "__main__":
             w += 0.15
 
         if SDTdVA > tradeVol[i] & i > 10: # Seven day trade vol
-            w -= 0.2
+            w -= 0.1
         else: 
-            w += 0.2
+            w += 0.1
         
 #########################################################
 
         if HDTsVA < tranVol[i] & i > 110: # Hundred day transaction volume
-            w += 0.05
+            w += 0.2
         else: 
-            w -= 0.05
+            w -= 0.2
 
         if TDTsVA < tradeVol[i] & i > 35: # Thirty day transaction volume
             w += 0.15
@@ -249,16 +249,16 @@ if __name__ == "__main__":
             w -= 0.15
 
         if SDTsVA < tranVol[i] & i > 10: # Seven day transaction volume
-            w += 0.2
+            w += 0.05
         else: 
-            w -= 0.15
+            w -= 0.05
 
 #########################################################
 
         if HDHA > hashRate[i] & i > 110: # Hundred day hashRate
-            w += 0.05
+            w += 0.2
         else: 
-            w -= 0.05
+            w -= 0.2
 
         if TDHA> hashRate[i] & i > 35: # Thirty day hashRate
             w += 0.1
@@ -266,9 +266,9 @@ if __name__ == "__main__":
             w -= 0.1
 
         if SDHA > hashRate[i] & i > 7: # Seven day hashRate
-            w += 0.2
+            w += 0.05
         else: 
-            w -= 0.2
+            w -= 0.05
         
         action = weight(w)
         if action == 0: # None 
